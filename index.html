@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mengru Lai - Resume</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+        
+        /* A4 Paper Settings */
+        @page {
+            size: A4;
+            margin: 0;
+        }
+        
+        .page-container {
+            width: 210mm;
+            min-height: 297mm;
+        }
+
+        @media print {
+            body { background-color: white; }
+            .page-container {
+                box-shadow: none;
+                margin: 0;
+                padding: 10mm 15mm;
+            }
+            .no-print { display: none; }
+        }
+
+        /* Custom Bullet Colors */
+        ul.custom-bullet li::before {
+            content: "•";
+            color: #3b82f6;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        /* Language Toggle Button */
+        #lang-toggle {
+            cursor: pointer;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 5px 14px;
+            font-size: 13px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        #lang-toggle:hover { background: #2563eb; }
+
+        /* Hidden class for language switching */
+        .lang-en, .lang-zh { transition: opacity 0.15s; }
+        body.zh .lang-en { display: none !important; }
+        body.zh .lang-zh { display: inline !important; }
+        body:not(.zh) .lang-en { display: inline !important; }
+        body:not(.zh) .lang-zh { display: none !important; }
+
+        /* block-level language spans */
+        .blk-en, .blk-zh { transition: opacity 0.15s; }
+        body.zh .blk-en { display: none !important; }
+        body.zh .blk-zh { display: block !important; }
+        body:not(.zh) .blk-en { display: block !important; }
+        body:not(.zh) .blk-zh { display: none !important; }
+    </style>
+</head>
+<body class="py-8 text-gray-800">
+
+    <!-- Print Instruction + Language Toggle (Hidden during print) -->
+    <div class="max-w-[210mm] mx-auto mb-4 flex justify-between items-center no-print">
+        <p class="text-sm text-gray-500">
+            💡 <span class="lang-en">Tip: Press</span><span class="lang-zh">提示：按</span>
+            <kbd class="bg-gray-200 px-1 rounded">Ctrl+P</kbd> / <kbd class="bg-gray-200 px-1 rounded">Cmd+P</kbd>
+            <span class="lang-en">to save as PDF. Enable "Background graphics".</span>
+            <span class="lang-zh">列印為 PDF，需開啟「背景圖形」。</span>
+        </p>
+        <button id="lang-toggle" onclick="toggleLang()">中文</button>
+    </div>
+
+    <!-- Resume Canvas -->
+    <div class="page-container bg-white mx-auto shadow-2xl p-[12mm] box-border relative">
+        
+        <!-- Header Section (compact to prevent page split) -->
+        <header class="border-b-2 border-gray-200 pb-4 mb-5">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-900 tracking-tight">Mengru Lai</h1>
+                    <h2 class="text-base font-medium text-blue-600 mt-1">
+                        <span class="lang-en">Frontend Developer</span>
+                        <span class="lang-zh">前端工程師</span>
+                    </h2>
+                    <p class="text-xs text-gray-500 mt-0.5">
+                        <i class="fa-solid fa-location-dot mr-1"></i>
+                        <span class="lang-en">Taipei, Taiwan</span>
+                        <span class="lang-zh">台北，台灣</span>
+                    </p>
+                </div>
+                <div class="text-right text-xs space-y-1 text-gray-600">
+                    <div>
+                        <p class="hover:text-blue-600 transition-colors">
+                            <i class="fa-solid fa-envelope w-4 text-center text-gray-400 mr-1"></i> mengru0503@gmail.com
+                        </p>
+                    </div>
+                    <div>
+                        <a href="https://mengru0503.github.io/Resume/" target="_blank" class="hover:text-blue-600 transition-colors">
+                            <i class="fa-solid fa-globe w-4 text-center text-gray-400 mr-1"></i>
+                            <span class="lang-en">Portfolio Website</span>
+                            <span class="lang-zh">作品集網站</span>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="https://github.com/Mengru0503" target="_blank" class="hover:text-blue-600 transition-colors">
+                            <i class="fa-brands fa-github w-4 text-center text-gray-400 mr-1"></i> github.com/Mengru0503
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content (2 Columns) -->
+        <div class="grid grid-cols-12 gap-8">
+            
+            <!-- LEFT COLUMN (Span 4) -->
+            <div class="col-span-4 space-y-7">
+                
+                <!-- Technical Skills -->
+                <section>
+                    <h3 class="text-sm font-bold text-gray-900 uppercase tracking-widest border-b border-gray-200 pb-2 mb-3">
+                        <span class="lang-en">Skills</span>
+                        <span class="lang-zh">技能</span>
+                    </h3>
+                    
+                    <div class="mb-4">
+                        <h4 class="text-xs font-semibold text-gray-500 uppercase mb-2">Frontend</h4>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="px-2 py-1 bg-blue-50 text-blue-700 text-xs font-medium rounded">HTML</span>
+                            <span class="px-2 py-1 bg-blue-50 text-blue-700 text-xs font-medium rounded">CSS</span>
+                            <span class="px-2 py-1 bg-blue-50 text-blue-700 text-xs font-medium rounded">JavaScript</span>
+                            <span class="px-2 py-1 bg-blue-50 text-blue-700 text-xs font-medium rounded">React</span>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <h4 class="text-xs font-semibold text-gray-500 uppercase mb-2">UI / UX</h4>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">Figma</span>
+                            <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">
+                                <span class="lang-en">Responsive Design</span>
+                                <span class="lang-zh">響應式設計</span>
+                            </span>
+                            <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">
+                                <span class="lang-en">UI Design</span>
+                                <span class="lang-zh">UI 設計</span>
+                            </span>
+                            <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">
+                                <span class="lang-en">Basic UX Thinking</span>
+                                <span class="lang-zh">基礎 UX 思維</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <h4 class="text-xs font-semibold text-gray-500 uppercase mb-2">Tools</h4>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">Git</span>
+                            <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">GitHub</span>
+                            <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">Vite</span>
+                            <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">VS Code</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Background -->
+                <section>
+                    <h3 class="text-sm font-bold text-gray-900 uppercase tracking-widest border-b border-gray-200 pb-2 mb-3">
+                        <span class="lang-en">Background</span>
+                        <span class="lang-zh">背景經歷</span>
+                    </h3>
+                    <ul class="text-sm text-gray-700 space-y-1.5">
+                        <li>• <span class="lang-en">Marketing Planning</span><span class="lang-zh">行銷企劃</span></li>
+                        <li>• <span class="lang-en">Multimedia Design</span><span class="lang-zh">多媒體設計</span></li>
+                        <li>• <span class="lang-en">Visual Design</span><span class="lang-zh">視覺設計</span></li>
+                        <li>• <span class="lang-en">Video Editing</span><span class="lang-zh">影片剪輯</span></li>
+                    </ul>
+                </section>
+
+                <!-- Training -->
+                <section>
+                    <h3 class="text-sm font-bold text-gray-900 uppercase tracking-widest border-b border-gray-200 pb-2 mb-3">
+                        <span class="lang-en">Training</span>
+                        <span class="lang-zh">培訓課程</span>
+                    </h3>
+                    <div class="mb-2">
+                        <h4 class="text-sm font-semibold text-gray-900">
+                            <span class="lang-en">Frontend Development Training</span>
+                            <span class="lang-zh">前端開發培訓課程</span>
+                        </h4>
+                        <p class="text-xs text-gray-500 mt-0.5 leading-relaxed">HTML / CSS / JavaScript <br> Bootstrap / jQuery</p>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- RIGHT COLUMN (Span 8) -->
+            <div class="col-span-8 space-y-7">
+                
+                <!-- Summary -->
+                <section>
+                    <h3 class="text-sm font-bold text-gray-900 uppercase tracking-widest border-b border-gray-200 pb-2 mb-3">
+                        <span class="lang-en">Summary</span>
+                        <span class="lang-zh">自我介紹</span>
+                    </h3>
+                    <p class="text-sm text-gray-700 leading-relaxed text-justify blk-en">
+                        Frontend developer with a strong background in marketing and multimedia design. Experienced in building responsive web interfaces and delivering interactive UI experiences. Skilled in HTML, CSS, JavaScript, and modern frontend tools. Highly passionate about developing user-centered web applications and crafting product-oriented interfaces.
+                    </p>
+                    <p class="text-sm text-gray-700 leading-relaxed text-justify blk-zh">
+                        具備行銷企劃與多媒體設計背景的前端工程師，擅長打造響應式網頁介面與互動式 UI 體驗。熟悉 HTML、CSS、JavaScript 及現代前端工具，熱衷於開發以使用者為中心的網頁應用程式與產品導向的介面設計。
+                    </p>
+                </section>
+
+                <!-- Projects -->
+                <section>
+                    <h3 class="text-sm font-bold text-gray-900 uppercase tracking-widest border-b border-gray-200 pb-2 mb-4">
+                        <span class="lang-en">Selected Projects</span>
+                        <span class="lang-zh">精選專案</span>
+                    </h3>
+                    
+                    <!-- Project 1: InnerSoul -->
+                    <div class="mb-6">
+                        <div class="flex justify-between items-start mb-1">
+                            <h4 class="text-base font-bold text-gray-900">InnerSoul</h4>
+                            <div class="text-xs space-x-2">
+                                <a href="https://github.com/aitong0113/InnerSoul" target="_blank" class="text-blue-600 hover:underline"><i class="fa-brands fa-github mr-1"></i>GitHub</a>
+                                <span class="text-gray-300">|</span>
+                                <a href="https://aitong0113.github.io/InnerSoul/" target="_blank" class="text-blue-600 hover:underline"><i class="fa-solid fa-arrow-up-right-from-square mr-1"></i>Demo</a>
+                            </div>
+                        </div>
+                        <p class="text-sm font-medium text-gray-600 mb-2">
+                            <span class="lang-en">Emotion Tracking Web App</span>
+                            <span class="lang-zh">情緒追蹤網頁應用</span>
+                        </p>
+                        <p class="text-xs text-gray-500 mb-2 font-mono bg-gray-50 inline-block px-2 py-1 rounded">React · JavaScript · CSS · Vite</p>
+                        
+                        <p class="text-sm text-gray-700 mb-2 blk-en">An emotion tracking web application designed to visualize users' mood patterns through interactive data.</p>
+                        <p class="text-sm text-gray-700 mb-2 blk-zh">一款情緒追蹤網頁應用，透過互動式資料視覺化幫助使用者了解自身的情緒模式。</p>
+                        
+                        <div class="grid grid-cols-2 gap-4 mt-3">
+                            <div>
+                                <h5 class="text-xs font-semibold text-gray-800 mb-1">
+                                    <span class="lang-en">Key Features:</span>
+                                    <span class="lang-zh">主要功能：</span>
+                                </h5>
+                                <ul class="text-sm text-gray-700 pl-4 custom-bullet space-y-1">
+                                    <li><span class="lang-en">Emotion logging system</span><span class="lang-zh">情緒記錄系統</span></li>
+                                    <li><span class="lang-en">Animated floating emotion interface</span><span class="lang-zh">動態浮動情緒介面</span></li>
+                                    <li><span class="lang-en">Data visualization dashboard</span><span class="lang-zh">資料視覺化儀表板</span></li>
+                                    <li><span class="lang-en">Responsive web layout</span><span class="lang-zh">響應式網頁版面</span></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h5 class="text-xs font-semibold text-gray-800 mb-1">
+                                    <span class="lang-en">Responsibilities:</span>
+                                    <span class="lang-zh">負責項目：</span>
+                                </h5>
+                                <ul class="text-sm text-gray-700 pl-4 custom-bullet space-y-1">
+                                    <li><span class="lang-en">Member center feature development</span><span class="lang-zh">會員中心功能開發</span></li>
+                                    <li><span class="lang-en">Developed interactive UI components</span><span class="lang-zh">互動式 UI 元件開發</span></li>
+                                    <li><span class="lang-en">Implemented emotion animation effects</span><span class="lang-zh">實作情緒動畫效果</span></li>
+                                    <li><span class="lang-en">Built responsive layout structure</span><span class="lang-zh">建構響應式版面架構</span></li>
+                                    <li><span class="lang-en">Member-related API integration</span><span class="lang-zh">會員相關 API 串接</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2: insightCard -->
+                    <div>
+                        <div class="flex justify-between items-start mb-1">
+                            <h4 class="text-base font-bold text-gray-900">insightCard</h4>
+                            <div class="text-xs space-x-2">
+                                <a href="https://github.com/Mengru0503/insightCard" target="_blank" class="text-blue-600 hover:underline"><i class="fa-brands fa-github mr-1"></i>GitHub</a>
+                                <span class="text-gray-300">|</span>
+                                <a href="https://mengru0503.github.io/insightCard/" target="_blank" class="text-blue-600 hover:underline"><i class="fa-solid fa-arrow-up-right-from-square mr-1"></i>Demo</a>
+                            </div>
+                        </div>
+                        <p class="text-sm font-medium text-gray-600 mb-2">
+                            <span class="lang-en">Knowledge Card Interactive Application</span>
+                            <span class="lang-zh">知識卡片互動應用</span>
+                        </p>
+                        <p class="text-xs text-gray-500 mb-2 font-mono bg-gray-50 inline-block px-2 py-1 rounded">React · Vite · CSS</p>
+                        
+                        <p class="text-sm text-gray-700 mb-2 blk-en">A knowledge card interactive application built with React component-based architecture.</p>
+                        <p class="text-sm text-gray-700 mb-2 blk-zh">以 React 元件化架構打造的知識卡片互動應用程式。</p>
+                        
+                        <div>
+                            <h5 class="text-xs font-semibold text-gray-800 mb-1">
+                                <span class="lang-en">Key Features:</span>
+                                <span class="lang-zh">主要功能：</span>
+                            </h5>
+                            <ul class="text-sm text-gray-700 pl-4 custom-bullet space-y-1">
+                                <li><span class="lang-en">React component-based architecture</span><span class="lang-zh">React 元件化架構</span></li>
+                                <li><span class="lang-en">Interactive knowledge card UI</span><span class="lang-zh">互動式知識卡片 UI</span></li>
+                                <li><span class="lang-en">Vite build system integration</span><span class="lang-zh">Vite 建置系統整合</span></li>
+                                <li><span class="lang-en">Clean &amp; minimal CSS layout</span><span class="lang-zh">簡潔的 CSS 版面設計</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Collaboration Experience -->
+                <section>
+                    <h3 class="text-sm font-bold text-gray-900 uppercase tracking-widest border-b border-gray-200 pb-2 mb-3">
+                        <span class="lang-en">Collaboration Experience</span>
+                        <span class="lang-zh">團隊合作經歷</span>
+                    </h3>
+                    
+                    <div>
+                        <div class="flex justify-between items-center mb-1">
+                            <h4 class="text-base font-bold text-gray-900">
+                                <span class="lang-en">Team Project – InnerSoul</span>
+                                <span class="lang-zh">團隊專案 – InnerSoul</span>
+                            </h4>
+                        </div>
+                        <p class="text-sm font-medium text-blue-600 mb-2">
+                            <span class="lang-en">Frontend Developer</span>
+                            <span class="lang-zh">前端工程師</span>
+                        </p>
+                        
+                        <ul class="text-sm text-gray-700 pl-4 custom-bullet space-y-1.5">
+                            <li>
+                                <span class="lang-en">Developed member center features including profile management and authentication flows.</span>
+                                <span class="lang-zh">開發會員中心功能，包含個人資料管理與登入驗證流程。</span>
+                            </li>
+                            <li>
+                                <span class="lang-en">Implemented interactive UI components and the emotion visualization interface.</span>
+                                <span class="lang-zh">開發互動式 UI 元件及情緒視覺化介面。</span>
+                            </li>
+                            <li>
+                                <span class="lang-en">Implemented emotion animation effects and built a responsive layout optimized for multiple devices.</span>
+                                <span class="lang-zh">實作情緒動畫效果，建構響應式版面架構，適配多種裝置與螢幕尺寸。</span>
+                            </li>
+                            <li>
+                                <span class="lang-en">Integrated member-related APIs for data fetching and state synchronization.</span>
+                                <span class="lang-zh">串接會員相關 API，處理資料請求與狀態同步。</span>
+                            </li>
+                            <li>
+                                <span class="lang-en">Collaborated with team members using agile GitHub workflow (branching, pull requests, and code reviews).</span>
+                                <span class="lang-zh">以敏捷式 GitHub 工作流程（分支、PR、程式碼審查）與團隊成員高效協作。</span>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleLang() {
+            const body = document.body;
+            const btn = document.getElementById('lang-toggle');
+            if (body.classList.contains('zh')) {
+                body.classList.remove('zh');
+                body.lang = 'en';
+                btn.textContent = '中文';
+            } else {
+                body.classList.add('zh');
+                body.lang = 'zh-TW';
+                btn.textContent = 'English';
+            }
+        }
+    </script>
+</body>
+</html>
